@@ -131,7 +131,7 @@ def query_embeddings(state: State) -> dict:
 
 
 
-def query_llm(state: State) -> Dict[str, str]:
+def query_llm(state: State) -> dict[str, str]:
     if not state.messages: 
         return {"response": "No messages found to process."}
 
