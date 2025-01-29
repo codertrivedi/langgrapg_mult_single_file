@@ -179,29 +179,23 @@ graph_builder.add_edge("query_vector_db", "query_llm")
 graph_builder.add_edge("query_llm", END)
 
 
-
-# Compile the Graph with Memory Checkpointing
-memory = MemorySaver()
 graph = graph_builder.compile(checkpointer=memory)
 
 # Execute the Workflow
 if __name__ == "__main__":
     file_path = "C:/Users/trive/OneDrive/Desktop/Learn the basics.pdf"  # Ensure this file exists
 
-    # Step 1: Upload & Process the Document
     upload_inputs = {"messages": [{"role": "user", "content": file_path}]}
     config = {"configurable": {"thread_id": "1"}}
     
     print(f"Uploading and processing: {file_path}")
     graph.invoke(upload_inputs, config)
 
-    # Step 2: Query the Processed Document
     query_input = {"messages": [{"role": "user", "content": "What is the main topic of the document?"}]}
     
     print("Querying the document...")
     query_output = graph.invoke(query_input, config)
 
-    # ✅ Handle missing response gracefully
     answer = query_output.get("response", "No answer was generated.")
     print("Answer:", answer)
 
