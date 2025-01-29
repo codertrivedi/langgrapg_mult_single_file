@@ -1,0 +1,11 @@
+langgraph
+langsmith
+langchain_anthropic
+langchain_core
+langchain_community
+sentence-transformers
+PyPDF2
+faiss-cpu
+numpy
+typing-extensions
+groq
